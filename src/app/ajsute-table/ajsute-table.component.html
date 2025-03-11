@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <tr>
+            <th>Atributo</th>
+            <th>Valor</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of employeeData; let i = index">
+            <td>
+                <div class="custom-dropdown">
+                    <select [(ngModel)]="item.attribute" [disabled]="isAttributeDisabled(item.attribute, i)">
+                        <option *ngFor="let attr of getAvailableAttributes(i)" [value]="attr">{{ attr }}</option>
+                    </select>
+                </div>
+            </td>
+            <td class="value-cell" (click)="enableEdit(i)">
+                <span *ngIf="!item.isEditing">{{ item.value }}</span>
+                <input *ngIf="item.isEditing" [(ngModel)]="item.value" (blur)="disableEdit(i)"
+                    (keyup.enter)="disableEdit(i)" autofocus />
+            </td>
+            <td>
+                <button (click)="removeLine(i)" class="remove-button">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="addLine()" class="add-button">Añadir nueva línea</button>
+
+<pre>{{employeeDataJson|json}}</pre>

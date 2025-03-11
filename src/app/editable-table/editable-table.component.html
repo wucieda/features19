@@ -1,0 +1,51 @@
+<div class="controls">
+    <label for="dataset">Choose dataset:</label>
+    <select id="dataset" (change)="loadDataset($any($event.target).value)">
+        @for (dataset of datasets; track $index) {
+        <option [value]="$index">Dataset {{ $index + 1 }}</option>
+        }
+    </select>
+</div>
+<div class="button-group">
+    <button class="add-btn" (click)="addRow()">➕ New Row</button>
+    <button class="save-btn" (click)="saveChanges()">💾 Save Changes</button>
+    <button class="reset-btn" (click)="resetChanges()">🔄 Reset</button>
+</div>
+
+<div class="filter-container">
+    <input type="text" [(ngModel)]="filterText" placeholder="Filter by column..." (input)="applyFilter()">
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let col of columns" (click)="sort(col)">
+                    {{ col }}
+                    @if (sortColumn === col) {
+                    <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                    }
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of data; track row.rowId) {
+            <tr [ngClass]="{
+              'new-row': row.action === Action.NONE,
+              'modified-row': row.action === Action.UPDATE_INSERT,
+              'deleted-row': row.action === Action.DELETE
+            }">
+                <td *ngFor="let value of row.values; track $index">
+                    <input type="text" [(ngModel)]="row.values[$index]" (input)="markModified(row)">
+                </td>
+                <td><span class="delete-btn" (click)="markForDeletion(row)" title="Delete">❌</span></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="notification" class="toast {{notificationType}}">
+    <span>{{ notification }}</span>
+</div>

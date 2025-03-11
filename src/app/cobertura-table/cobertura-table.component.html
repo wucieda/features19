@@ -1,0 +1,126 @@
+<div class="table-container">
+
+  <!-- Filtros y botón -->
+  <div class="controls">
+    <select [(ngModel)]="filtroSubyacente">
+      <option value="">Todos los Subyacentes</option>
+      @for (sub of subyacentesUnicos; track sub) {
+        <option [value]="sub">{{ sub }}</option>
+      }
+    </select>
+
+    <input type="number" [(ngModel)]="filtroId" placeholder="Filtrar por ID" />
+
+    <button class="btn-add" (click)="abrirModal()">➕ Añadir Cobertura</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subyacente</th>
+        <th>Nominal Sub</th>
+        <th>Vencimiento</th>
+        <th>Divisa Sub</th>
+        <th>Nominal Pata Pagada</th>
+        <th>Vencimiento Cob</th>
+        <th>Divisa Pagada</th>
+        <th>Porcentaje</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of coberturasFiltradas()">
+        <td>{{ c.id }}</td>
+        <td>{{ c.subyacente }}</td>
+        <td>{{ c.nominalSub }}</td>
+        <td>{{ c.vencimiento }}</td>
+        <td>{{ c.divisaSub }}</td>
+        <td>{{ c.nominalPataPagada }}</td>
+        <td>{{ c.vencimientoCob }}</td>
+        <td>{{ c.divisaPagada }}</td>
+        <td>{{ c.porcentaje }}</td>
+        <td>{{ c.tipo }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Totales:</strong></td>
+        <td>{{ calcularTotalNominalSub() }}</td>
+        <td></td>
+        <td></td>
+        <td>{{ calcularTotalNominalPataPagada() }}</td>
+        <td colspan="4"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal" [class.show]="mostrarModal" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="cerrarModal()">×</span>
+    <h2>Nueva Cobertura</h2>
+
+    <form #formCobertura="ngForm" (ngSubmit)="agregarCobertura(formCobertura)" novalidate>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="number" id="id" name="id" [(ngModel)]="nuevaCobertura.id" required />
+        </div>
+
+        <div class="form-group">
+          <label for="subyacente">Subyacente</label>
+          <input type="text" id="subyacente" name="subyacente" [(ngModel)]="nuevaCobertura.subyacente" required />
+        </div>
+
+        <div class="form-group">
+          <label for="nominalSub">Nominal Sub</label>
+          <input type="number" id="nominalSub" name="nominalSub" [(ngModel)]="nuevaCobertura.nominalSub" required />
+        </div>
+
+        <div class="form-group">
+          <label for="vencimiento">Vencimiento</label>
+          <input type="date" id="vencimiento" name="vencimiento" [(ngModel)]="nuevaCobertura.vencimiento" required />
+        </div>
+
+        <div class="form-group">
+          <label for="divisaSub">Divisa Sub</label>
+          <input type="text" id="divisaSub" name="divisaSub" [(ngModel)]="nuevaCobertura.divisaSub" required />
+        </div>
+
+        <div class="form-group">
+          <label for="nominalPataPagada">Nominal Pata Pagada</label>
+          <input type="number" id="nominalPataPagada" name="nominalPataPagada"
+            [(ngModel)]="nuevaCobertura.nominalPataPagada" required />
+        </div>
+
+        <div class="form-group">
+          <label for="vencimientoCob">Vencimiento Cob</label>
+          <input type="date" id="vencimientoCob" name="vencimientoCob" [(ngModel)]="nuevaCobertura.vencimientoCob"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="divisaPagada">Divisa Pagada</label>
+          <input type="text" id="divisaPagada" name="divisaPagada" [(ngModel)]="nuevaCobertura.divisaPagada" required />
+        </div>
+
+        <div class="form-group">
+          <label for="porcentaje">Porcentaje</label>
+          <input type="text" id="porcentaje" name="porcentaje" [(ngModel)]="nuevaCobertura.porcentaje" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <input type="text" id="tipo" name="tipo" [(ngModel)]="nuevaCobertura.tipo" required />
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" [disabled]="formCobertura.invalid">Guardar</button>
+        <button type="button" (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
