@@ -1,239 +1,241 @@
 /* Estilos generales de la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 20px 0;
-    background-color: #ffffff;
-  
-    /* Estilos para las celdas de la tabla */
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-    }
-  
-    /* Estilos para el encabezado de la tabla */
-    th {
-      background-color: #2c3e50; /* Azul oscuro moderno */
-      color: #ecf0f1; /* Blanco suave */
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-  
-    /* Estilos para las filas de la tabla */
-    tbody tr {
-      border-bottom: 1px solid #dddddd;
-      transition: background-color 0.3s ease;
-  
-      /* Fondo alterno para filas pares */
-      &:nth-of-type(even) {
-        background-color: #f9f9f9;
-      }
-  
-      /* Efecto hover para las filas */
-      &:hover {
-        background-color: #f1f1f1;
-      }
-  
-      /* Borde inferior para la última fila */
-      &:last-of-type {
-        border-bottom: 2px solid #2c3e50;
-      }
-    }
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+  background-color: #ffffff;
+
+  /* Estilos para las celdas de la tabla */
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
   }
-  
-  /* Estilos para el contenedor del dropdown */
-  .custom-dropdown {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-  
-    /* Estilos para el dropdown */
-    select {
-      width: 100%;
-      padding: 8px;
-      border: none;
-      background-color: transparent;
-      appearance: none; /* Elimina el estilo por defecto del dropdown */
-      font-size: 16px;
-      color: #333;
-      cursor: pointer;
-      outline: none;
-  
-      /* Estilo cuando el dropdown está enfocado */
-      &:focus {
-        color: #2c3e50;
-      }
-  
-      /* Estilo para el dropdown deshabilitado */
-      &:disabled {
-        background-color: #f9f9f9;
-        cursor: not-allowed;
-      }
-    }
-  
-    /* Ícono personalizado para el dropdown */
-    &::after {
-      content: "▼";
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #2c3e50;
-      font-size: 12px;
-    }
-  }
-  
-  /* Estilos para la celda del valor */
-  .value-cell {
+
+  /* Estilos para el encabezado de la tabla */
+  th {
+    background-color: #2c3e50; /* Azul oscuro moderno */
+    color: #ecf0f1; /* Blanco suave */
     font-weight: bold;
-    color: #2c3e50;
-    font-size: 16px;
-    cursor: pointer;
-    position: relative;
-  
-    /* Estilos para la celda editable */
-    .editable-cell {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid transparent; /* Borde transparente */
-      border-radius: 4px;
-      font-size: 16px;
-      color: #333;
-      outline: none;
-      background-color: transparent;
-      transition: border-color 0.3s ease;
-  
-      /* Estilo cuando la celda está en modo edición */
-      &[contenteditable="true"] {
-        border-color: transparent; /* Sin borde */
-        background-color: transparent; /* Sin fondo */
-      }
-  
-      /* Estilo cuando la celda está enfocada */
-      &:focus {
-        border-color: transparent; /* Sin borde */
-        background-color: transparent; /* Sin fondo */
-      }
-    }
-  }
-  
-  /* Estilos para el botón de añadir nueva línea */
-  .add-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #1abc9c; /* Turquesa moderno */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  
-    /* Efecto hover para el botón */
-    &:hover {
-      background-color: #16a085; /* Turquesa más oscuro */
-    }
-  
-    /* Estilo cuando el botón está deshabilitado */
-    &:disabled {
-      background-color: #bdc3c7; /* Gris moderno */
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-  }
-  
-  /* Estilos para el botón de eliminar */
-  .remove-button {
-    padding: 5px 10px;
-    background-color: #e74c3c; /* Rojo moderno */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-transform: uppercase;
     font-size: 14px;
+  }
+
+  /* Estilos para las filas de la tabla */
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
     transition: background-color 0.3s ease;
-  
-    /* Efecto hover para el botón */
+
+    /* Fondo alterno para filas pares */
+    &:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Efecto hover para las filas */
     &:hover {
-      background-color: #c0392b; /* Rojo más oscuro */
+      background-color: #f1f1f1;
+    }
+
+    /* Borde inferior para la última fila */
+    &:last-of-type {
+      border-bottom: 2px solid #2c3e50;
     }
   }
-  
-  /* Estilos para el botón de guardar y enviar */
-  .save-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #3498db; /* Azul moderno */
-    color: white;
+}
+
+/* Estilos para el contenedor del dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  /* Estilos para el dropdown */
+  select {
+    width: 100%;
+    padding: 8px;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: transparent;
+    appearance: none; /* Elimina el estilo por defecto del dropdown */
     font-size: 16px;
-    transition: background-color 0.3s ease;
-  
-    /* Efecto hover para el botón */
-    &:hover {
-      background-color: #2980b9; /* Azul más oscuro */
+    color: #333;
+    cursor: pointer;
+    outline: none;
+
+    /* Estilo cuando el dropdown está enfocado */
+    &:focus {
+      color: #2c3e50;
+    }
+
+    /* Estilo para el dropdown deshabilitado */
+    &:disabled {
+      background-color: #f9f9f9;
+      cursor: not-allowed;
     }
   }
-  
-  /* Estilos responsivos para pantallas pequeñas */
-  @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
+
+  /* Ícono personalizado para el dropdown */
+  &::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #2c3e50;
+    font-size: 12px;
+  }
+}
+
+/* Estilos para la celda del valor */
+.value-cell {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+
+  /* Estilos para la celda editable */
+  .editable-cell {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid transparent; /* Borde transparente por defecto */
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    background-color: transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Estilo cuando la celda está en modo edición */
+    &[contenteditable="true"] {
+      border-color: #1abc9c; /* Borde turquesa */
+      box-shadow: 0 0 8px rgba(26, 188, 156, 0.5); /* Sombra turquesa */
+      background-color: #ffffff; /* Fondo blanco */
     }
-  
-    th {
-      display: none;
-    }
-  
-    td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
-      font-size: 14px;
-  
-      /* Agrega el nombre del atributo antes del valor */
-      &::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 15px;
-        font-weight: bold;
-        text-align: left;
-        color: #2c3e50;
-      }
-    }
-  
-    /* Ajustes para el dropdown en móviles */
-    .custom-dropdown {
-      select {
-        font-size: 14px;
-      }
-  
-      &::after {
-        font-size: 10px;
-      }
-    }
-  
-    .value-cell {
-      font-size: 14px;
-  
-      .editable-cell {
-        font-size: 14px;
-      }
-    }
-  
-    /* Ajustes para los botones en móviles */
-    .add-button, .remove-button, .save-button {
-      width: 100%;
-      margin-top: 5px;
+
+    /* Estilo cuando la celda está enfocada */
+    &:focus {
+      border-color: #1abc9c; /* Borde turquesa */
+      box-shadow: 0 0 8px rgba(26, 188, 156, 0.5); /* Sombra turquesa */
+      background-color: #ffffff; /* Fondo blanco */
     }
   }
+}
+
+/* Estilos para el botón de añadir nueva línea */
+.add-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #1abc9c; /* Turquesa moderno */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  /* Efecto hover para el botón */
+  &:hover {
+    background-color: #16a085; /* Turquesa más oscuro */
+  }
+
+  /* Estilo cuando el botón está deshabilitado */
+  &:disabled {
+    background-color: #bdc3c7; /* Gris moderno */
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+/* Estilos para el botón de eliminar */
+.remove-button {
+  padding: 5px 10px;
+  background-color: #e74c3c; /* Rojo moderno */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  /* Efecto hover para el botón */
+  &:hover {
+    background-color: #c0392b; /* Rojo más oscuro */
+  }
+}
+
+/* Estilos para el botón de guardar y enviar */
+.save-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db; /* Azul moderno */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  /* Efecto hover para el botón */
+  &:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+  }
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    display: none;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    font-size: 14px;
+
+    /* Agrega el nombre del atributo antes del valor */
+    &::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+      color: #2c3e50;
+    }
+  }
+
+  /* Ajustes para el dropdown en móviles */
+  .custom-dropdown {
+    select {
+      font-size: 14px;
+    }
+
+    &::after {
+      font-size: 10px;
+    }
+  }
+
+  .value-cell {
+    font-size: 14px;
+
+    .editable-cell {
+      font-size: 14px;
+    }
+  }
+
+  /* Ajustes para los botones en móviles */
+  .add-button, .remove-button, .save-button {
+    width: 100%;
+    margin-top: 5px;
+  }
+}
