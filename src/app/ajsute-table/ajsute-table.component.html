@@ -17,8 +17,10 @@
             </td>
             <td class="value-cell" (click)="enableEdit(i)">
                 <span *ngIf="!item.isEditing">{{ item.value }}</span>
-                <input *ngIf="item.isEditing" [(ngModel)]="item.value" (blur)="disableEdit(i)"
-                    (keyup.enter)="disableEdit(i)" autofocus />
+                <div *ngIf="item.isEditing" contenteditable="true" (blur)="disableEdit(i, $event)"
+                    (keyup.enter)="disableEdit(i, $event)" class="editable-cell">
+                    {{ item.value }}
+                </div>
             </td>
             <td>
                 <button (click)="removeLine(i)" class="remove-button">Eliminar</button>
@@ -26,6 +28,8 @@
         </tr>
     </tbody>
 </table>
-<button (click)="addLine()" class="add-button">Añadir nueva línea</button>
+<button (click)="addLine()" class="add-button" [disabled]="isAddButtonDisabled()">
+    Añadir
+</button>
 
 <pre>{{employeeDataJson|json}}</pre>

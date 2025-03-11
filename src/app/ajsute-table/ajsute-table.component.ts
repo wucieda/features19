@@ -36,15 +36,15 @@ export class AjsuteTableComponent {
     this.updateJson(); // Actualizar el JSON al eliminar una línea
   }
 
-  // Habilitar la edición de una línea
   enableEdit(index: number): void {
     this.employeeData[index].isEditing = true;
   }
-
-  // Deshabilitar la edición de una línea
-  disableEdit(index: number): void {
+  
+  disableEdit(index: number, event: Event): void {
+    const newValue = (event.target as HTMLElement).innerText.trim();
+    this.employeeData[index].value = +newValue; // Convertir a número
     this.employeeData[index].isEditing = false;
-    this.updateJson(); // Actualizar el JSON al editar un valor
+    this.updateJson(); // Actualizar el JSON
   }
 
   // Obtener los atributos disponibles
@@ -61,6 +61,11 @@ export class AjsuteTableComponent {
       .filter((item, i) => i !== index)
       .map((item) => item.attribute);
     return usedAttributes.includes(attribute);
+  }
+
+  isAddButtonDisabled(): boolean {
+    const existingAttributes = this.employeeData.map((item) => item.attribute);
+    return existingAttributes.includes('talla') && existingAttributes.includes('peso');
   }
 
   // Actualizar el objeto JSON

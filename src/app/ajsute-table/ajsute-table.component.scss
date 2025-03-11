@@ -95,21 +95,30 @@ table {
     color: #2c3e50;
     font-size: 16px;
     cursor: pointer;
+    position: relative;
   
-    /* Estilos para el campo de entrada editable */
-    input {
+    /* Estilos para la celda editable */
+    .editable-cell {
       width: 100%;
       padding: 8px;
-      border: 1px solid #2c3e50;
+      border: 1px solid transparent; /* Borde transparente */
       border-radius: 4px;
       font-size: 16px;
       color: #333;
       outline: none;
+      background-color: transparent;
+      transition: border-color 0.3s ease;
   
-      /* Estilo cuando el campo está enfocado */
+      /* Estilo cuando la celda está en modo edición */
+      &[contenteditable="true"] {
+        border-color: transparent; /* Sin borde */
+        background-color: transparent; /* Sin fondo */
+      }
+  
+      /* Estilo cuando la celda está enfocada */
       &:focus {
-        border-color: #1abc9c; /* Turquesa moderno */
-        box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+        border-color: transparent; /* Sin borde */
+        background-color: transparent; /* Sin fondo */
       }
     }
   }
@@ -129,6 +138,13 @@ table {
     /* Efecto hover para el botón */
     &:hover {
       background-color: #16a085; /* Turquesa más oscuro */
+    }
+  
+    /* Estilo cuando el botón está deshabilitado */
+    &:disabled {
+      background-color: #bdc3c7; /* Gris moderno */
+      cursor: not-allowed;
+      opacity: 0.7;
     }
   }
   
@@ -210,7 +226,7 @@ table {
     .value-cell {
       font-size: 14px;
   
-      input {
+      .editable-cell {
         font-size: 14px;
       }
     }
